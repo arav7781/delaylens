@@ -1,0 +1,16 @@
+{
+  "collections": {
+    "hadoop_jobs": 35,
+    "agent_logs": 2,
+    "clickstream": 151,
+    "scenarios": 5,
+    "kpis": 607,
+    "orders": 65752,
+    "adhoc_jobs": 1,
+    "order_items": 180519
+  },
+  "data_size_mb": 244.6,
+  "storage_size_mb": 38.4,
+  "index_size_mb": 7.3,
+  "seconds": 10.0
+}

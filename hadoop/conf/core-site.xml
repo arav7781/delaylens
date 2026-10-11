@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<configuration>
+  <property><name>fs.defaultFS</name><value>hdfs://localhost:9820</value></property>
+  <property><name>hadoop.tmp.dir</name><value>/Users/aravsaxena/opt/hadoop-data/tmp</value></property>
+  <property><name>hadoop.proxyuser.aravsaxena.hosts</name><value>*</value></property>
+  <property><name>hadoop.proxyuser.aravsaxena.groups</name><value>*</value></property>
+</configuration>

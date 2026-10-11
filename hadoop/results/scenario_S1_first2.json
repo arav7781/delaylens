@@ -1,0 +1,77 @@
+{
+ "name": "S1_first2",
+ "label": "First Class promised 2 days",
+ "policy": {
+  "SLA": "First_Class=2"
+ },
+ "rows": [
+  {
+   "key": "First Class",
+   "orders": 10079,
+   "late": 0,
+   "on_time": 9602,
+   "advance": 0,
+   "canceled": 477,
+   "late_pct": 0.0,
+   "on_time_pct": 95.27,
+   "canceled_pct": 4.73,
+   "avg_delay_days": 0.0,
+   "avg_delay_when_late": 0.0,
+   "avg_real_days": 2.0,
+   "avg_scheduled_days": 2.0,
+   "sales": 5674370.0,
+   "profit": 643122.0
+  },
+  {
+   "key": "Same Day",
+   "orders": 3571,
+   "late": 1648,
+   "on_time": 1759,
+   "advance": 0,
+   "canceled": 164,
+   "late_pct": 46.15,
+   "on_time_pct": 49.26,
+   "canceled_pct": 4.59,
+   "avg_delay_days": 0.484,
+   "avg_delay_when_late": 1.0,
+   "avg_real_days": 0.484,
+   "avg_scheduled_days": 0.0,
+   "sales": 1942528.0,
+   "profit": 203018.5
+  },
+  {
+   "key": "Second Class",
+   "orders": 12778,
+   "late": 9803,
+   "on_time": 2453,
+   "advance": 0,
+   "canceled": 522,
+   "late_pct": 76.72,
+   "on_time_pct": 19.2,
+   "canceled_pct": 4.09,
+   "avg_delay_days": 2.002,
+   "avg_delay_when_late": 2.504,
+   "avg_real_days": 4.002,
+   "avg_scheduled_days": 2.0,
+   "sales": 7145440.0,
+   "profit": 750308.0
+  },
+  {
+   "key": "Standard Class",
+   "orders": 39324,
+   "late": 14995,
+   "on_time": 7510,
+   "advance": 15127,
+   "canceled": 1692,
+   "late_pct": 38.13,
+   "on_time_pct": 57.57,
+   "canceled_pct": 4.3,
+   "avg_delay_days": -0.003,
+   "avg_delay_when_late": 1.503,
+   "avg_real_days": 3.997,
+   "avg_scheduled_days": 4.0,
+   "sales": 22022400.0,
+   "profit": 2370460.0
+  }
+ ]
+}

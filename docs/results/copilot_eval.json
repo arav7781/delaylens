@@ -1,0 +1,137 @@
+[
+  {
+    "question": "What is our overall late-delivery rate and how many orders were late?",
+    "tools": [
+      "get_overall_kpis"
+    ],
+    "seconds": 5.9,
+    "expected": [
+      54.82,
+      36048
+    ],
+    "found": [
+      54.82,
+      36048
+    ],
+    "pass": true,
+    "llm_ok": true,
+    "answer": "Our overall late-delivery rate is **54.8%**, with **36,048 orders** delivered late out of 65,752 total orders.\n\n| Metric | Value |\n|---|---|\n| Total orders | 65,752 |\n| Late deliveries | 36,048 |\n| Late rate | 54.8% |\n| On-time + advance | 26,849 (40.8%) |\n| Canceled | 2,855 (4.3%) |\n| Avg delay when late | 1.6 days |\n| Avg delay (all orders) | 0.6 days |\n\n**Recommendations:**\n1. **Focus on the 1.6-day average lateness** – even small schedule buffers could halve the late rate.\n2. **Investigate the 11,674 open orders in segments with >75% lateness** – these are critical hotspots.\n3. **Compare shipping modes** – First Class likely drives most delays (check mode-level data).\n\n_Source: Hadoop MapReduce job delaylens-kpi-order-all (65,752 orders, Jan 2015 – Jan 2018)_"
+  },
+  {
+    "question": "Compare shipping modes: promised vs actual days and late %.",
+    "tools": [
+      "get_overall_kpis",
+      "get_kpi_breakdown"
+    ],
+    "seconds": 6.6,
+    "expected": [
+      95.27,
+      76.72,
+      38.13
+    ],
+    "found": [
+      95.27,
+      76.72,
+      38.13
+    ],
+    "pass": true,
+    "llm_ok": true,
+    "answer": "**First Class has the worst performance: 95.3% late with an average delay of 1.0 day, while Standard Class is the best at 38.1% late and essentially zero average delay (-0.003 days).**\n\n| Shipping Mode | Orders | Late % | Avg Real Days | Avg Scheduled Days | Avg Delay (days) |\n|---------------|--------|--------|---------------|-------------------|------------------|\n| First Class   | 10,079 | 95.3%  | 2.0           | 1.0               | +1.0             |\n| Second Class  | 12,778 | 76.7%  | 4.0           | 2.0               | +2.0             |\n| Same Day      | 3,571  | 46.2%  | 0.5           | 0.0               | +0.5             |\n| Standard Class| 39,324 | 38.1%  | 4.0           | 4.0               | -0.003           |\n\n```chart\n{\"type\": \"bar\", \"title\": \"Late % by shipping mode\", \"unit\": \"%\", \"data\": [{\"label\": \"First Class\", \"value\": 95.3}, {\"label\": \"Second Class\", \"value\": 76.7}, {\"label\": \"Same Day\", \"value\": 46.2}, {\"label\": \"Standard Class\", \"value\": 38.1}]}\n```\n\n**Key observations:**\n- First Class is promised in 1 day but actually takes 2 days — every order is effectively late.\n- Second Class has the largest absolute delay (+2.0 days) and the highest average delay when late (2.5 days).\n- Standard Class is the only mode with negative average delay (slightly early), and it accounts for 60% of all orders.\n\n**Recommendations:**\n1. **Review First Class operations** — the 100% failure to meet the 1-day promise suggests a systemic capacity issue.\n2. **Investigate Second Class routing** — the 2-day average delay indicates a structural problem, not random variance.\n3. **Consider adjusting Standard Class promises** — with 57.6% on-time/advance and negative delay, you could tighten the 4-day window to 3 days for competitive advantage.\n\n_Source: Hadoop KPI job by shipping mode, 65,752 orders_"
+  },
+  {
+    "question": "Among product categories with at least 1,000 order lines, which has the highest late rate?",
+    "tools": [
+      "get_kpi_breakdown"
+    ],
+    "seconds": 5.2,
+    "expected": [
+      "Accessories",
+      56.97
+    ],
+    "found": [
+      "Accessories",
+      56.97
+    ],
+    "pass": true,
+    "llm_ok": true,
+    "answer": "Among categories with at least 1,000 order lines, **Accessories** has the highest late rate at **57.0%**.\n\n| Category | Orders | Late % | Avg delay (days) |\n|----------|--------|--------|------------------|\n| Accessories | 1,780 | 57.0% | 0.59 |\n| Golf Gloves | 1,070 | 56.3% | 0.62 |\n| Electronics | 3,156 | 56.1% | 0.57 |\n| Girls' Apparel | 1,201 | 55.3% | 0.59 |\n| Shop By Sport | 10,984 | 55.2% | 0.58 |\n\n**Recommendations:**\n1. **Accessories** – despite the highest late %, its avg delay (0.59 days) is not the worst; focus on reducing the *frequency* of late shipments rather than the duration.\n2. **Golf Gloves** – has the highest avg delay (0.62 days) and a late rate just below Accessories; investigate its supply chain for root causes.\n3. All top-5 categories cluster around 55–57% late; a company-wide initiative to improve on-time performance by even 5% would affect ~10,000 orders.\n\n_Source: Hadoop MapReduce KPI job by item category, 14 groups total, filtered to ≥1,000 orders._"
+  },
+  {
+    "question": "If First Class promised 2 days and Second Class 4 days, what would the late rate be?",
+    "tools": [
+      "get_sla_scenarios",
+      "simulate_sla_policy"
+    ],
+    "seconds": 5.3,
+    "expected": [
+      32.78
+    ],
+    "found": [
+      32.78
+    ],
+    "pass": true,
+    "llm_ok": true,
+    "answer": "If First Class is promised 2 days and Second Class 4 days (keeping Standard Class at 4 days and Same Day at 0 days), the overall late rate would be **32.78%** (21,551 late orders out of 65,752).\n\nThis is a **22.0 percentage point improvement** from the current 54.82% late rate, avoiding 14,497 late orders.\n\n| Shipping Mode | Orders | Current Late % | New Late % | Change |\n|---|---|---|---|---|\n| First Class | 10,079 | 95.27% | 0.00% | -95.3 pp |\n| Second Class | 12,778 | 76.72% | 38.41% | -38.3 pp |\n| Standard Class | 39,324 | 38.13% | 38.13% | No change |\n| Same Day | 3,571 | 46.15% | 46.15% | No change |\n\n**Recommendations:**\n1. **First Class is now perfectly on-time** – consider if 2-day promise is too conservative vs. actual delivery performance.\n2. **Second Class still has 38.4% late** – investigate root causes (e.g., carrier handoff delays) before further promise adjustments.\n3. **Standard Class remains the biggest volume driver** (60% of orders) – a 5-day promise (scenario S4) would cut overall late rate to 18.93%.\n\n_Source: Hadoop MapReduce SLA scenario S2 (First Class 2d + Second Class 4d) on 65,752 orders._"
+  },
+  {
+    "question": "How many open orders are in segments that are late at least 75% of the time, and how much sales is at stake?",
+    "tools": [
+      "find_at_risk_open_orders"
+    ],
+    "seconds": 5.6,
+    "expected": [
+      11674
+    ],
+    "found": [
+      11674
+    ],
+    "pass": true,
+    "llm_ok": true,
+    "answer": "There are **11,674 open orders** in segments with ≥75% historical lateness, representing **$6,579,784.61 in sales at stake**. Of these, an estimated **9,907 orders** are expected to be late.\n\n**Key details:**\n- **Open statuses included:** PENDING, PENDING_PAYMENT, PROCESSING, ON_HOLD, PAYMENT_REVIEW\n- **Top segments by late %:** First Class in Central Asia (100% late) and Southern Africa (98.5% late)\n- **Example high-value orders:** Order #50927 (Kazakhstan, $1,219.89, 100% late segment), Order #47061 (Uzbekistan, $1,157.79, 100% late segment)\n\n**Recommendations:**\n1. **Expedite** the 10 highest-value open orders (all in 100% late segments) to prevent confirmed losses.\n2. **Audit** First Class shipping from Central Asia – it has a perfect late record and $5,000+ in open orders.\n3. **Prioritize** the $6.6M portfolio by contacting customers in high-late segments to manage expectations or switch shipping modes.\n\n_Source: MongoDB orders + Hadoop KPI by region × shipping-mode segment (65,752 orders)_"
+  },
+  {
+    "question": "In the LATAM market, which shipping mode is late most often?",
+    "tools": [
+      "get_kpi_breakdown",
+      "query_orders"
+    ],
+    "seconds": 7.1,
+    "expected": [
+      "First Class"
+    ],
+    "found": [
+      "First Class"
+    ],
+    "pass": true,
+    "llm_ok": true,
+    "answer": "In the LATAM market, **First Class** is late most often, with a late rate of **94.7%** (2,498 out of 2,638 orders).\n\n| Shipping Mode | Orders | Late | Late % | Avg Delay (days) |\n|---------------|--------|------|--------|------------------|\n| First Class   | 2,638  | 2,498 | **94.7%** | 1.0 |\n| Second Class  | 3,307  | 2,510 | 75.9%  | 2.0 |\n| Same Day      | 913    | 442   | 48.4%  | 0.5 |\n| Standard Class| 10,323 | 3,889 | 37.7%  | -0.01 (early) |\n\n```chart\n{\"type\": \"bar\", \"title\": \"Late % by shipping mode in LATAM\", \"unit\": \"%\", \"data\": [{\"label\": \"First Class\", \"value\": 94.7}, {\"label\": \"Second Class\", \"value\": 75.9}, {\"label\": \"Same Day\", \"value\": 48.4}, {\"label\": \"Standard Class\", \"value\": 37.7}]}\n```\n\n**Recommendations:**\n1. **Review First Class operations** – nearly all orders are late despite only a 1-day schedule; consider whether the promise is realistic.\n2. **Shift volume to Standard Class** – it delivers 0.01 days early on average with the lowest late rate (37.7%).\n3. **Audit Same Day** – 48.4% late suggests the same-day window may be too tight for LATAM logistics.\n\n_Source: Hadoop KPI job by market_mode + MongoDB aggregation for LATAM, 17,181 orders._"
+  },
+  {
+    "question": "Which month in 2016 had the highest late-delivery rate?",
+    "tools": [
+      "get_kpi_breakdown"
+    ],
+    "seconds": 4.3,
+    "expected": [
+      "2016-06",
+      57.28
+    ],
+    "found": [
+      "2016-06",
+      57.28
+    ],
+    "pass": true,
+    "llm_ok": true,
+    "answer": "The highest late-delivery rate in 2016 was in **June 2016**, at **57.3%** (968 late out of 1,690 orders).\n\n| Month | Orders | Late | Late % |\n|-------|--------|------|--------|\n| 2016-06 | 1,690 | 968 | **57.28%** |\n| 2016-01 | 1,772 | 998 | 56.32% |\n| 2016-12 | 1,763 | 990 | 56.15% |\n| 2016-03 | 1,764 | 987 | 55.95% |\n| 2016-08 | 1,766 | 983 | 55.66% |\n| 2016-05 | 1,763 | 971 | 55.08% |\n\nJune also had the highest **average delay when late** (1.63 days) and the lowest **on-time + advance rate** (38.4%) among 2016 months.\n\n**Recommendations:**\n1. Investigate June 2016 operations – the 57.3% late rate is 2.2 percentage points above the 2016 average (55.1%).\n2. Review carrier performance and warehouse capacity specifically for early-summer demand spikes.\n3. Consider adjusting scheduled shipping days in June (currently 2.92 days) to better match actual delivery times (3.56 days).\n\n_Source: Hadoop MapReduce job delaylens-kpi-order-month, 2016 months only_"
+  },
+  {
+    "question": "Write me a poem about cats.",
+    "tools": [],
+    "seconds": 6.0,
+    "expected": [],
+    "found": [],
+    "pass": true,
+    "llm_ok": true,
+    "answer": "I can't write a poem about cats—my expertise is supply-chain analytics, not creative writing. I can, however, analyze your logistics data (e.g., delivery performance, late orders, shipping delays) if you have a question about that.\n\n_Source: No data provided._"
+  }
+]

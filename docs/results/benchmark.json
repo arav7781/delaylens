@@ -1,0 +1,89 @@
+{
+  "job": "late-delivery KPI by order region (item level)",
+  "cluster": "single-node pseudo-distributed Hadoop 3.5.0, YARN 8 GB / 8 vcores, 16 MB HDFS blocks",
+  "rows": [
+    {
+      "scale": 0.25,
+      "rows": 45129,
+      "mb": 11.2,
+      "map_tasks": 2,
+      "streaming_s": 22.66,
+      "java_s": 19.4,
+      "pandas_s": 0.08,
+      "streaming_shuffle_bytes": 707,
+      "java_shuffle_bytes": 249
+    },
+    {
+      "scale": 0.5,
+      "rows": 90259,
+      "mb": 22.4,
+      "map_tasks": 2,
+      "streaming_s": 23.84,
+      "java_s": 20.01,
+      "pandas_s": 0.11,
+      "streaming_shuffle_bytes": 1317,
+      "java_shuffle_bytes": 708
+    },
+    {
+      "scale": 1,
+      "rows": 180519,
+      "mb": 44.6,
+      "map_tasks": 3,
+      "streaming_s": 24.82,
+      "java_s": 21.21,
+      "pandas_s": 0.21,
+      "streaming_shuffle_bytes": 3202,
+      "java_shuffle_bytes": 1698,
+      "no_combiner_s": 24.58,
+      "no_combiner_shuffle_bytes": 8319999
+    },
+    {
+      "scale": 2,
+      "rows": 361038,
+      "mb": 89.7,
+      "map_tasks": 6,
+      "streaming_s": 28.61,
+      "java_s": 25.13,
+      "pandas_s": 0.41,
+      "streaming_shuffle_bytes": 6304,
+      "java_shuffle_bytes": 3354
+    },
+    {
+      "scale": 4,
+      "rows": 722076,
+      "mb": 179.9,
+      "map_tasks": 12,
+      "streaming_s": 37.32,
+      "java_s": 30.5,
+      "pandas_s": 0.8,
+      "streaming_shuffle_bytes": 12584,
+      "java_shuffle_bytes": 6697
+    },
+    {
+      "scale": 8,
+      "rows": 1444152,
+      "mb": 360.4,
+      "map_tasks": 22,
+      "streaming_s": 59.17,
+      "java_s": 51.88,
+      "pandas_s": 1.58,
+      "streaming_shuffle_bytes": 25422,
+      "java_shuffle_bytes": 13624,
+      "no_combiner_s": 87.89,
+      "no_combiner_shuffle_bytes": 66559968
+    },
+    {
+      "scale": 16,
+      "rows": 2888304,
+      "mb": 723.3,
+      "map_tasks": 44,
+      "streaming_s": 141.53,
+      "java_s": 102.05,
+      "pandas_s": 3.21,
+      "streaming_shuffle_bytes": 50265,
+      "java_shuffle_bytes": 26894,
+      "no_combiner_s": 106.24,
+      "no_combiner_shuffle_bytes": 133119936
+    }
+  ]
+}

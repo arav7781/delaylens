@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<configuration>
+  <property><name>dfs.replication</name><value>1</value></property>
+  <!-- 16 MB blocks so the ~50 MB order file splits into several blocks / map tasks -->
+  <property><name>dfs.blocksize</name><value>16777216</value></property>
+  <property><name>dfs.namenode.name.dir</name><value>/Users/aravsaxena/opt/hadoop-data/namenode</value></property>
+  <property><name>dfs.datanode.data.dir</name><value>/Users/aravsaxena/opt/hadoop-data/datanode</value></property>
+  <property><name>dfs.permissions.enabled</name><value>false</value></property>
+</configuration>

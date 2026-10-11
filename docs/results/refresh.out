@@ -1,0 +1,6 @@
+clean ok
+pipeline ok: done: 33 jobs in 533.5s
+benchmark ok
+load ok
+queries ok
+REFRESH_DONE

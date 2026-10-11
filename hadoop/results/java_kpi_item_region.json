@@ -1,0 +1,163 @@
+[
+ {
+  "key": "Canada",
+  "items": "959",
+  "late": "468",
+  "late_pct": "48.80",
+  "avg_delay_days": "0.391"
+ },
+ {
+  "key": "Caribbean",
+  "items": "8318",
+  "late": "4415",
+  "late_pct": "53.08",
+  "avg_delay_days": "0.547"
+ },
+ {
+  "key": "Central Africa",
+  "items": "1677",
+  "late": "972",
+  "late_pct": "57.96",
+  "avg_delay_days": "0.640"
+ },
+ {
+  "key": "Central America",
+  "items": "28341",
+  "late": "15518",
+  "late_pct": "54.75",
+  "avg_delay_days": "0.562"
+ },
+ {
+  "key": "Central Asia",
+  "items": "553",
+  "late": "306",
+  "late_pct": "55.33",
+  "avg_delay_days": "0.646"
+ },
+ {
+  "key": "East Africa",
+  "items": "1852",
+  "late": "1036",
+  "late_pct": "55.94",
+  "avg_delay_days": "0.571"
+ },
+ {
+  "key": "East of USA",
+  "items": "6915",
+  "late": "3849",
+  "late_pct": "55.66",
+  "avg_delay_days": "0.585"
+ },
+ {
+  "key": "Eastern Asia",
+  "items": "7280",
+  "late": "3955",
+  "late_pct": "54.33",
+  "avg_delay_days": "0.566"
+ },
+ {
+  "key": "Eastern Europe",
+  "items": "3920",
+  "late": "2182",
+  "late_pct": "55.66",
+  "avg_delay_days": "0.580"
+ },
+ {
+  "key": "North Africa",
+  "items": "3232",
+  "late": "1762",
+  "late_pct": "54.52",
+  "avg_delay_days": "0.552"
+ },
+ {
+  "key": "Northern Europe",
+  "items": "9792",
+  "late": "5292",
+  "late_pct": "54.04",
+  "avg_delay_days": "0.547"
+ },
+ {
+  "key": "Oceania",
+  "items": "10148",
+  "late": "5482",
+  "late_pct": "54.02",
+  "avg_delay_days": "0.556"
+ },
+ {
+  "key": "South America",
+  "items": "14935",
+  "late": "8111",
+  "late_pct": "54.31",
+  "avg_delay_days": "0.556"
+ },
+ {
+  "key": "South Asia",
+  "items": "7731",
+  "late": "4350",
+  "late_pct": "56.27",
+  "avg_delay_days": "0.597"
+ },
+ {
+  "key": "South of USA",
+  "items": "4045",
+  "late": "2256",
+  "late_pct": "55.77",
+  "avg_delay_days": "0.580"
+ },
+ {
+  "key": "Southeast Asia",
+  "items": "9539",
+  "late": "5297",
+  "late_pct": "55.53",
+  "avg_delay_days": "0.558"
+ },
+ {
+  "key": "Southern Africa",
+  "items": "1157",
+  "late": "617",
+  "late_pct": "53.33",
+  "avg_delay_days": "0.479"
+ },
+ {
+  "key": "Southern Europe",
+  "items": "9431",
+  "late": "5129",
+  "late_pct": "54.38",
+  "avg_delay_days": "0.516"
+ },
+ {
+  "key": "US Center",
+  "items": "5887",
+  "late": "3252",
+  "late_pct": "55.24",
+  "avg_delay_days": "0.587"
+ },
+ {
+  "key": "West Africa",
+  "items": "3696",
+  "late": "1953",
+  "late_pct": "52.84",
+  "avg_delay_days": "0.551"
+ },
+ {
+  "key": "West Asia",
+  "items": "6009",
+  "late": "3322",
+  "late_pct": "55.28",
+  "avg_delay_days": "0.569"
+ },
+ {
+  "key": "West of USA",
+  "items": "7993",
+  "late": "4313",
+  "late_pct": "53.96",
+  "avg_delay_days": "0.557"
+ },
+ {
+  "key": "Western Europe",
+  "items": "27109",
+  "late": "15140",
+  "late_pct": "55.85",
+  "avg_delay_days": "0.597"
+ }
+]

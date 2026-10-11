@@ -1,0 +1,19 @@
+[
+ {
+  "key": "ALL",
+  "orders": 65752,
+  "late": 36048,
+  "on_time": 11722,
+  "advance": 15127,
+  "canceled": 2855,
+  "late_pct": 54.82,
+  "on_time_pct": 40.83,
+  "canceled_pct": 4.34,
+  "avg_delay_days": 0.567,
+  "avg_delay_when_late": 1.618,
+  "avg_real_days": 3.501,
+  "avg_scheduled_days": 2.934,
+  "sales": 36784700.0,
+  "profit": 3966910.0
+ }
+]

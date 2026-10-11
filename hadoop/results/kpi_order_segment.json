@@ -1,0 +1,53 @@
+[
+ {
+  "key": "Corporate",
+  "orders": 19856,
+  "late": 10871,
+  "on_time": 3525,
+  "advance": 4621,
+  "canceled": 839,
+  "late_pct": 54.75,
+  "on_time_pct": 41.03,
+  "canceled_pct": 4.23,
+  "avg_delay_days": 0.56,
+  "avg_delay_when_late": 1.615,
+  "avg_real_days": 3.49,
+  "avg_scheduled_days": 2.93,
+  "sales": 11168410.0,
+  "profit": 1202575.0
+ },
+ {
+  "key": "Home Office",
+  "orders": 11777,
+  "late": 6505,
+  "on_time": 2079,
+  "advance": 2682,
+  "canceled": 511,
+  "late_pct": 55.23,
+  "on_time_pct": 40.43,
+  "canceled_pct": 4.34,
+  "avg_delay_days": 0.58,
+  "avg_delay_when_late": 1.624,
+  "avg_real_days": 3.511,
+  "avg_scheduled_days": 2.931,
+  "sales": 6520540.0,
+  "profit": 690840.0
+ },
+ {
+  "key": "Consumer",
+  "orders": 34119,
+  "late": 18672,
+  "on_time": 6118,
+  "advance": 7824,
+  "canceled": 1505,
+  "late_pct": 54.73,
+  "on_time_pct": 40.86,
+  "canceled_pct": 4.41,
+  "avg_delay_days": 0.566,
+  "avg_delay_when_late": 1.618,
+  "avg_real_days": 3.504,
+  "avg_scheduled_days": 2.938,
+  "sales": 19095790.0,
+  "profit": 2073480.0
+ }
+]
